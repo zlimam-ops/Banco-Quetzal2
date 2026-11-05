@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Banco Quetzal | Banca en línea</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#" data-go="home">Banco Quetzal</a>
+  <nav id="nav-public">
+    <a href="#" data-go="home">Inicio</a>
+    <a href="#servicios" data-go="home">Servicios</a>
+    <a href="#" data-go="register">Registrarme</a>
+    <button class="button sm" data-go="login">Ingresar</button>
+  </nav>
+  <nav id="nav-private" hidden>
+    <span id="nav-user"></span>
+    <button class="button sm" id="btn-logout">Cerrar sesión</button>
+  </nav>
+</header>
+
+<!-- ============ INICIO ============ -->
+<main id="home" class="view">
+  <section class="hero">
+    <div class="hero-text">
+      <span class="badge">Banca en línea 24/7</span>
+      <h1>Tu banco, siempre contigo.</h1>
+      <p>Consulta saldos, transfiere, paga tus servicios y descarga tu estado de cuenta sin hacer fila.</p>
+      <div class="actions">
+        <button class="button" data-go="register">Abrir mi cuenta</button>
+        <button class="button dark" data-go="login">Ya soy cliente</button>
+      </div>
+    </div>
+    <div class="wallet-slot"></div>
+  </section>
+
+  <section class="strip">
+    <div><b>24/7</b><span>Disponible todo el día</span></div>
+    <div><b>Q0</b><span>Sin filas ni trámites</span></div>
+    <div><b>Q500</b><span>De bienvenida al registrarte</span></div>
+  </section>
+
+  <section id="servicios" class="services">
+    <h2>Lo que puedes hacer con Banco Quetzal</h2>
+    <div class="grid">
+      <article><h3>Cuentas de ahorro y monetarias</h3><p>Consulta tu saldo disponible y tus datos en un solo lugar.</p></article>
+      <article><h3>Transferencias</h3><p>Envía dinero a otra cuenta indicando el número y el monto. Validamos tu saldo al instante.</p></article>
+      <article><h3>Pago de servicios</h3><p>Energía eléctrica, agua potable, telefonía e internet.</p></article>
+      <article><h3>Movimientos</h3><p>Revisa tus últimas operaciones con fecha, detalle y saldo.</p></article>
+      <article><h3>Estado de cuenta</h3><p>Genera tu estado por rango de fechas e imprímelo o guárdalo en PDF.</p></article>
+      <article><h3>Registro en minutos</h3><p>Ingresa tus datos personales y recibe tu número de cuenta.</p></article>
+    </div>
+  </section>
+
+  <section class="steps">
+    <h2>Empieza en 3 pasos</h2>
+    <ol>
+      <li><b>Regístrate</b><span>Ingresa tus datos personales.</span></li>
+      <li><b>Ingresa</b><span>Accede con tu usuario y contraseña.</span></li>
+      <li><b>Opera</b><span>Transfiere, paga y consulta tus movimientos.</span></li>
+    </ol>
+  </section>
+  <footer class="foot">Banco Quetzal es una institución ficticia creada con fines académicos.</footer>
+</main>
+
+<!-- ============ REGISTRO ============ -->
+<main id="register" class="view bg-purple" hidden>
+  <div class="bill b1 dim" style="--r:-12deg"><span>Q100</span></div>
+  <div class="bill b4 dim" style="--r:12deg"><span>Q20</span></div>
+  <div class="form_area">
+    <p class="title">Registro de cliente</p>
+    <form id="form-register" autocomplete="off">
+      <div class="form_group"><label class="sub_title" for="r-name">Nombre completo</label>
+        <input class="form_style" id="r-name" required></div>
+      <div class="form_group"><label class="sub_title" for="r-dpi">DPI (13 dígitos)</label>
+        <input class="form_style" id="r-dpi" inputmode="numeric" pattern="[0-9]{13}" required></div>
+      <div class="form_group"><label class="sub_title" for="r-email">Correo electrónico</label>
+        <input class="form_style" id="r-email" type="email" required></div>
+      <div class="form_group"><label class="sub_title" for="r-tel">Teléfono</label>
+        <input class="form_style" id="r-tel" inputmode="numeric" pattern="[0-9]{8}" placeholder="8 dígitos" required></div>
+      <div class="form_group"><label class="sub_title" for="r-user">Usuario</label>
+        <input class="form_style" id="r-user" required minlength="3"></div>
+      <div class="form_group"><label class="sub_title" for="r-pass">Contraseña</label>
+        <input class="form_style" id="r-pass" type="password" required minlength="4"></div>
+      <p class="msg" id="r-msg" role="alert"></p>
+      <button class="btn" type="submit">Crear mi cuenta</button>
+    </form>
+    <a class="link" href="#" data-go="login">¿Ya tienes cuenta? Ingresa</a>
+  </div>
+</main>
+
+<!-- ============ DATOS DEL REGISTRO ============ -->
+<main id="registered" class="view bg-purple" hidden>
+  <div class="form_area wide">
+    <p class="title">¡Registro exitoso!</p>
+    <div id="registered-data" class="data-list"></div>
+    <button class="btn" data-go="login">Acceder al sistema</button>
+  </div>
+</main>
+
+<!-- ============ LOGIN ============ -->
+<main id="login" class="view bg-purple" hidden>
+  <div class="bill b1 dim" style="--r:-10deg"><span>Q100</span></div>
+  <div class="bill b3 dim" style="--r:-4deg"><span>Q200</span></div>
+  <div class="bill b4 dim" style="--r:14deg"><span>Q20</span></div>
+  <div class="wallet-slot"></div>
+  <div class="container">
+    <div class="heading">Banca en línea</div>
+    <form class="form" id="form-login">
+      <input class="input" id="l-user" placeholder="Usuario" required autocomplete="username">
+      <input class="input" id="l-pass" type="password" placeholder="Contraseña" required autocomplete="current-password">
+      <p class="msg" id="l-msg" role="alert"></p>
+      <input class="login-button" type="submit" value="Ingresar">
+    </form>
+    <div class="social-account-container">
+      <span class="title">Usuario de prueba: admin · Contraseña: 2026</span>
+    </div>
+    <span class="agreement"><a href="#" data-go="register">¿No tienes cuenta? Regístrate</a></span>
+  </div>
+</main>
+
+<!-- Fondo del sistema: tarjetas de crédito decorativas -->
+<div class="bg-cards" id="bg-cards" hidden aria-hidden="true">
+  <div class="cc c1"><i class="cc-chip"></i><b>•••• •••• •••• 4821</b><span>CLIENTE QUETZAL</span></div>
+  <div class="cc c2"><i class="cc-chip"></i><b>•••• •••• •••• 7305</b><span>CLIENTE QUETZAL</span></div>
+  <div class="cc c3"><i class="cc-chip"></i><b>•••• •••• •••• 1196</b><span>CLIENTE QUETZAL</span></div>
+  <div class="cc c4"><i class="cc-chip"></i><b>•••• •••• •••• 6642</b><span>CLIENTE QUETZAL</span></div>
+</div>
+
+<!-- ============ SISTEMA (cliente autenticado) ============ -->
+<main id="app" class="view app" hidden>
+  <div class="tabs" role="tablist">
+    <button data-tab="summary" class="on">Mis cuentas</button>
+    <button data-tab="moves">Movimientos</button>
+    <button data-tab="transfer">Transferir</button>
+    <button data-tab="services">Pagar servicios</button>
+    <button data-tab="statement">Estado de cuenta</button>
+  </div>
+  <section id="tab-content"></section>
+</main>
+
+<template id="wallet-tpl">
+  <div class="wallet">
+    <div class="wallet-back"></div>
+    <div class="w-card c-ahorro"><div class="card-inner">
+      <div class="card-top"><span>Ahorro</span><div class="chip"></div></div>
+      <div class="card-bottom"><div><span class="wlabel">Titular</span><span class="wvalue">Cliente Quetzal</span></div>
+        <div class="card-number-wrapper"><span class="hidden-stars">•••• 0001</span><span class="card-number">0000 0000 0000 0001</span></div></div></div></div>
+    <div class="w-card c-monetaria"><div class="card-inner">
+      <div class="card-top"><span>Monetaria</span><div class="chip"></div></div>
+      <div class="card-bottom"><div><span class="wlabel">Titular</span><span class="wvalue">Cliente Quetzal</span></div>
+        <div class="card-number-wrapper"><span class="hidden-stars">•••• 0002</span><span class="card-number">0000 0000 0000 0002</span></div></div></div></div>
+    <div class="w-card c-credito"><div class="card-inner">
+      <div class="card-top"><span>Crédito</span><div class="chip"></div></div>
+      <div class="card-bottom"><div><span class="wlabel">Titular</span><span class="wvalue">Cliente Quetzal</span></div>
+        <div class="card-number-wrapper"><span class="hidden-stars">•••• 0003</span><span class="card-number">0000 0000 0000 0003</span></div></div></div></div>
+    <div class="pocket"><div class="pocket-content">
+      <div class="balance-stars">••••••</div><div class="balance-real">Q 15,320.50</div>
+      <div class="eye-icon-wrapper">
+        <svg class="eye-icon eye-slash" width="20" height="20" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><path d="M3 21 21 3"/></svg>
+        <svg class="eye-icon eye-open" width="20" height="20" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div></div></div>
+  </div>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>
